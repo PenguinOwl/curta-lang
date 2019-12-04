@@ -28,7 +28,7 @@ class Runtime
       when "lever"
         if command[2]? == "to"
           case command[3]
-          when "foreward"
+          when "forword"
             @vm.polarity = true
           when "reverse"
             @vm.polarity = false
