@@ -1,0 +1,13 @@
+name: curta-lang
+version: 0.1.0
+
+authors:
+  - PenguinOwl <henryjboles@gmail.com>
+
+targets:
+  curta:
+    main: src/curta-lang.cr
+
+crystal: 0.31.1
+
+license: MIT
