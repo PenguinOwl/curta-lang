@@ -1,0 +1,21 @@
+#! /usr/bin/curta
+
+out Numerator:
+set num to (in)
+out Denominator:
+set denom to (in)
+
+set reg to (get num)
+turn
+clear rev
+set reg to (get denom)
+set lever to reverse
+set crank to up
+turn
+skip (get res 11)
+goto 14
+set crank to down
+turn
+
+set result to (read rev)
+out (get result)

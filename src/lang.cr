@@ -121,7 +121,7 @@ class Runtime
         @vm.turn
       end
     when "skip"
-      unless command[1] == 0
+      unless command[1].to_i == 0
         return "$skip"
       end
     when "goto"
@@ -133,7 +133,7 @@ class Runtime
     when "out"
       puts command[1..-1].join(" ")
     else
-      syntax_error "no index directive"
+      syntax_error "no such directive"
     end
     return ""
   end
