@@ -1,10 +1,8 @@
 class Curta
-
   class Readout
-
-    getter writeable : Bool 
-    getter length : Int32   
-    getter value : Int128  
+    getter writeable : Bool
+    getter length : Int32
+    getter value : Int128
 
     def initialize(length, writeable = true)
       @writeable = writeable
@@ -51,19 +49,17 @@ class Curta
     def resolve
       max = Int128.new(10) &** length
       while @value < 0
-        @value += max 
+        @value += max
       end
       @value %= max
       return @value
     end
-
   end
 
   class Register
-
-    property offset : Int32 
-    getter length : Int32   
-    getter values : Array(Int32) 
+    property offset : Int32
+    getter length : Int32
+    property values : Array(Int32)
 
     def initialize(length)
       @length = length
@@ -100,7 +96,6 @@ class Curta
     def to_s
       return @values.reverse.join("") + "0" * offset
     end
-
   end
 
   getter result_wheel : Readout
@@ -117,9 +112,10 @@ class Curta
     @polarity = true
   end
 
-  def turn
-    @result_wheel.value += @register.to_i * (@crank_up ? -1 : 1)
-    @revolution_wheel.value += (@crank_up ? -1 : 1) * (@polarity ? 1 : -1)
+  def turn(count = 1)
+    count.times do
+      @result_wheel.value += @register.to_i * (@crank_up ? -1 : 1)
+      @revolution_wheel.value += (@crank_up ? -1 : 1) * (@polarity ? 1 : -1) * 10**register.offset
+    end
   end
-
 end
